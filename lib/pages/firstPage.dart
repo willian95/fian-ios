@@ -36,14 +36,14 @@ class _FirstPageState extends State<FirstPage> {
   var localEvents = [];
   var dailyText = "";
   int moonPhaseIndex = 0;
-  DateTime selectedDate = null;
+  DateTime selectedDate = new DateTime(0);
   var events = [];
   List moonPhases = ["nueva","creciente","llena", "menguante", "llena_equinoccio_otoño", "llena_equinoccio_primavera", "llena_solsticio_invierno", "llena_solsticio_verano", "nueva_equinoccio_otoño", "nueva_equinoccio_primavera", "nueva_solsticio_invierno", "nueva_solsticio_verano", "creciente_equinoccio_otoño", "creciente_equinoccio_primavera", "creciente_solsticio_invierno", "creciente_solsticio_verano", "menguante_equinoccio_otoño", "menguante_equinoccio_primavera", "menguante_solsticio_invierno", "menguante_solsticio_verano"];
   int currentMonth = 0;
   int currentYear = 0;
   int currentDay = 0;
   String mainWeather = "";
-  ScrollController _scrollController = null;
+  ScrollController _scrollController = new ScrollController();
   GlobalKey containerKey = GlobalKey();
   double dailyTextPosition = 0;
   bool showDownArrow = true;
@@ -99,7 +99,7 @@ class _FirstPageState extends State<FirstPage> {
 
   getDailyText(day, month, year) async{
 
-    var data = await http.get('https://app.fiancolombia.org/api/daily-text?date='+day.toString()+"/"+month.toString()+"/"+year.toString());
+    var data = await http.get(Uri.parse('https://app.fiancolombia.org/api/daily-text?date='+day.toString()+"/"+month.toString()+"/"+year.toString()));
     var res = json.decode(data.body);
     setState((){
       dailyText = res["text"];
@@ -107,8 +107,8 @@ class _FirstPageState extends State<FirstPage> {
 
     Timer(Duration(seconds: 3), (){
       
-      RenderBox box = containerKey.currentContext.findRenderObject();
-      Offset position = box.localToGlobal(Offset.zero); //this is global position
+      final RenderBox? box = containerKey.currentContext!.findRenderObject() as RenderBox?;
+      final Offset position = box!.localToGlobal(Offset.zero); //this is global position
       dailyTextPosition = position.dy;
       
     });
@@ -119,7 +119,7 @@ class _FirstPageState extends State<FirstPage> {
 
   _selectDate(BuildContext context) async {
 
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       locale : const Locale("es","ES"),
       context: context,
       initialDate: selectedDate,// Refer step 1
@@ -193,7 +193,7 @@ class _FirstPageState extends State<FirstPage> {
       });
     }
 
-    var data = await http.get('https://app.fiancolombia.org/api/events'+"/"+month.toString()+"/"+year.toString());
+    var data = await http.get(Uri.parse('https://app.fiancolombia.org/api/events'+"/"+month.toString()+"/"+year.toString()));
     var newEvents = json.decode(data.body);
 
 
@@ -242,7 +242,7 @@ class _FirstPageState extends State<FirstPage> {
     _determinePosition();
   }
   
-  Future<Position> _determinePosition() async {
+  _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -364,7 +364,7 @@ class _FirstPageState extends State<FirstPage> {
     print("mainLocation");
     print(location);
 
-    var data = await http.get("https://api.openweathermap.org/data/2.5/forecast?lat="+location.latitude.toString()+"&lon="+location.longitude.toString()+"&appid=d816b2362dc0ff9fc94670863e1505d9");
+    var data = await http.get(Uri.parse("https://api.openweathermap.org/data/2.5/forecast?lat="+location.latitude.toString()+"&lon="+location.longitude.toString()+"&appid=d816b2362dc0ff9fc94670863e1505d9"));
     var weatherData = json.decode(data.body);
 
     if(this.mounted){
