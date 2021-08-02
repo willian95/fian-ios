@@ -689,7 +689,7 @@ class _FirstPageState extends State<FirstPage> {
                                         var indexDate = new DateTime(indexYear, indexMonth, 7);
                                         
                                         this.selectedDate = new DateTime(indexYear, indexMonth, indexDay);
-                                        var lastDay = dateUtils.lastDayOfMonth(indexDate.month, indexDate.year);
+                                        var lastDay = dateUtils.DateUtils.lastDayOfMonth(indexDate);
                                       
                                         if(reason == CarouselPageChangedReason.manual){
                                           if(indexDay < 2){
