@@ -43,12 +43,12 @@ class _Tutorial extends State <Tutorial> {
 
                   Center(child: Container(
                     transform: Matrix4.translationValues((MediaQuery.of(context).size.width/2)*-1 + 60, MediaQuery.of(context).size.height - 280, 0.0),
-                    child: Image.asset("images/hoja2.png", width: 300, height: 300),
+                    child: Image.asset("images/hoja2.png", width: 200, height: 200),
                   )),
 
                   Center(child: Container(
                     transform: Matrix4.translationValues(MediaQuery.of(context).size.width/2 - 40, MediaQuery.of(context).size.height - 170, 0.0),
-                    child: Image.asset("images/hoja3.png", width: 160, height: 160),
+                    child: Image.asset("images/hoja3.png", width: 120, height: 120),
                   )),
 
                     Container(
