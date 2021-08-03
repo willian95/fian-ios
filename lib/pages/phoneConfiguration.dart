@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newtestapp/pages/tutorial.dart';
 import 'package:newtestapp/pages/confirmNumber.dart';
-//import 'package:/pages/firstPage.dart';
+import 'package:newtestapp/pages/firstPage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:localstorage/localstorage.dart';
@@ -228,7 +228,7 @@ class _PhoneConfiguration extends State <PhoneConfiguration> {
                                       var tutorialStored = await storage.getItem("tutorialstored");
 
                                       if(tutorialStored == "true"){
-                                        //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false);
+                                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false);
                                       }else{
                                         
                                         Navigator.push(context, new MaterialPageRoute(
