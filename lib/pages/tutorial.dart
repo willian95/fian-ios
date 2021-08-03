@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-//import 'package:FIAN/pages/firstPage.dart';
+import 'package:newtestapp/pages/firstPage.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -198,7 +198,7 @@ class _Tutorial extends State <Tutorial> {
                                     )
                                   ),
                                   onPressed: () => {
-                                    //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false)
+                                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false)
                                   }
                                 ),
                               ),
@@ -211,7 +211,7 @@ class _Tutorial extends State <Tutorial> {
                                     await storage.ready; 
                                     storage.setItem("tutorialstored", "true");
 
-                                    //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false);
+                                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>FirstPage()), (Route<dynamic> route) => false);
                                   },
                                 ),
                               )

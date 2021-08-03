@@ -44,7 +44,7 @@ class _MarketState extends State <Market> {
 "Vichada-33"];
 
 
-  Future<List<MarketShow>>? getData() async {
+  getData() async {
 
     try{
 

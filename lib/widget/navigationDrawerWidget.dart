@@ -20,62 +20,85 @@ class NavigationDrawerWidget extends StatelessWidget {
             color: Color.fromRGBO(20, 78, 65, 1),
             child: SingleChildScrollView(
               child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: Image.asset("images/logowhite.png", width: 160, height: 160),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minWidth: MediaQuery.of(context).size.width, minHeight: MediaQuery.of(context).size.height),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: 40),
+                        child: Center(
+                          child: Image.asset("images/logowhite.png", width: 160, height: 160),
+                        ),
                       ),
-                    ),
 
-                    Column(
-                      children:[
-                        ListTile(
-                          title: Text("CICLO LUNAR", style: GoogleFonts.montserrat(color: Colors.white, fontWeight: FontWeight.w800)),
-                          onTap: () => selectedItem(context, 0),
-                        ),
-                        ListTile(
-                          title: Text("LISTA DE MERCADOS", style: GoogleFonts.montserrat(color: Colors.white)),
-                          onTap: () => selectedItem(context, 1),
-                        ),
-                        ListTile(
-                          title: Text("CONTÁCTANOS", style: GoogleFonts.montserrat(color: Colors.white)),
-                          onTap: () => selectedItem(context, 2),
-                        ),
-                        ListTile(
-                          title: Text("TUTORIAL", style: GoogleFonts.montserrat(color: Colors.white)),
-                          onTap: () => selectedItem(context, 3),
-                        ),
-                      ]
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.only(bottom: 60, top: 20),
-                      child: Column(
+                      Column(
                         children:[
-                          
-                          Center(
-                            child: Image.asset("images/univeridad_de_caldas.png", width: 90)
+                          ListTile(
+                            title: Text("CICLO LUNAR", style: GoogleFonts.montserrat(color: Colors.white, fontWeight: FontWeight.w800)),
+                            onTap: () => selectedItem(context, 0),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Center(
-                              child: Image.asset("images/jardin_botanico.png", width: 90)
-                            ),
+                          ListTile(
+                            title: Text("LISTA DE MERCADOS", style: GoogleFonts.montserrat(color: Colors.white)),
+                            onTap: () => selectedItem(context, 1),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: Center(
-                              child: Image.asset("images/renaflogo.png", width: 120)
-                            ),
+                          ListTile(
+                            title: Text("CONTÁCTANOS", style: GoogleFonts.montserrat(color: Colors.white)),
+                            onTap: () => selectedItem(context, 2),
+                          ),
+                          ListTile(
+                            title: Text("TUTORIAL", style: GoogleFonts.montserrat(color: Colors.white)),
+                            onTap: () => selectedItem(context, 3),
                           ),
                         ]
                       ),
-                    )
 
-                  ],
+                      Container(
+                        margin: EdgeInsets.only(bottom: 60, top: 20, left: 15, right: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children:[
+                            
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Center(
+                                  child: Image.asset("images/univeridad_de_caldas.png", width: 80)
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Center(
+                                    child: Image.asset("images/jardin_botanico.png", width: 80)
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 20),
+                                  child: Center(
+                                    child: Image.asset("images/ati.png", width: 80)
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 20),
+                                  child: Center(
+                                    child: Image.asset("images/renaf.png", width: 120)
+                                  ),
+                                ),
+
+                              ],
+                            )
+                            
+                          ]
+                        ),
+                      )
+
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -243,6 +243,8 @@ class _FirstPageState extends State<FirstPage> {
   }
   
   _determinePosition() async {
+    
+
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -320,6 +322,9 @@ class _FirstPageState extends State<FirstPage> {
       });
     }
 
+    print("weather");
+    print(weather[0]["weather"][0]["main"]);
+
     if(this.currentDay == day && this.currentMonth == month && this.currentYear == year){
       if (this.mounted) {
         setState((){
@@ -366,6 +371,8 @@ class _FirstPageState extends State<FirstPage> {
 
     var data = await http.get(Uri.parse("https://api.openweathermap.org/data/2.5/forecast?lat="+location.latitude.toString()+"&lon="+location.longitude.toString()+"&appid=d816b2362dc0ff9fc94670863e1505d9"));
     var weatherData = json.decode(data.body);
+
+    print(weatherData["list"][0]["weather"][0]["main"]);
 
     if(this.mounted){
       setState((){
@@ -668,7 +675,7 @@ class _FirstPageState extends State<FirstPage> {
                                 new CarouselSlider(
                                   carouselController: _eventCarouselController,
                                   options: CarouselOptions(
-                                    height: 670,
+                                    height: 800,
                                     initialPage: 0,
                                     enableInfiniteScroll: false,
                                     reverse: false,
@@ -872,7 +879,7 @@ class _FirstPageState extends State<FirstPage> {
                                                             // horizontal, this produces 2 rows.
                                                             crossAxisCount: 2,
                                                             padding: EdgeInsets.all(0),
-                                                            childAspectRatio: 1.2,
+                                                            childAspectRatio: 1,
                                                             mainAxisSpacing: 0,
                                                             shrinkWrap: true,
                                                             // Generate 100 widgets that display their index in the List.
