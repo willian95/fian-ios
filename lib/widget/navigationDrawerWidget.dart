@@ -59,39 +59,24 @@ class NavigationDrawerWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children:[
                             
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Center(
-                                  child: Image.asset("images/univeridad_de_caldas.png", width: 80)
+                            Center(
+                              child: Image.asset("images/univeridad_de_caldas.png", width: 100)
+                            ),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 20, right: 20),
+                                child: Center(
+                                  child: Image.asset("images/jardin_botanico.png", width: 100)
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Center(
-                                    child: Image.asset("images/jardin_botanico.png", width: 80)
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 20),
-                                  child: Center(
-                                    child: Image.asset("images/ati.png", width: 80)
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20),
-                                  child: Center(
-                                    child: Image.asset("images/renaf.png", width: 120)
-                                  ),
-                                ),
-
-                              ],
-                            )
+                            Container(
+                              margin: EdgeInsets.only(top: 20),
+                              child: Center(
+                                child: Image.asset("images/renaf.png", width: 180)
+                              ),
+                            ),
                             
                           ]
                         ),
