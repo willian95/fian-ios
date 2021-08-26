@@ -44,7 +44,7 @@ class _MarketState extends State <Market> {
 "Vichada-33"];
 
 
-  getData() async {
+  Future<List<MarketShow>> getData() async {
 
     try{
 
@@ -74,6 +74,8 @@ class _MarketState extends State <Market> {
         return markets;
 
     }on Exception catch(_){
+
+      return [];
 
         AlertDialog alert = AlertDialog(
           title: Text("No posees conexión a internet")
