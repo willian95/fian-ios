@@ -184,7 +184,7 @@ class _ContactState extends State <Contact> {
                       ),
                       
                       Container(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.only(top: 35),
                         child: ElevatedButton(
                           child: Text(
                             "enviar".toUpperCase(),

@@ -4,11 +4,12 @@ import 'package:newtestapp/pages/phoneConfiguration.dart';
 import 'package:newtestapp/pages/firstPage.dart';
 import 'package:newtestapp/pages/tutorial.dart';
 import 'package:localstorage/localstorage.dart';
-//import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 import 'dart:async';
 
@@ -51,6 +52,7 @@ class _SplashScreen extends State <SplashScreen> {
   void initState(){
     
     super.initState();
+    getToken();
     Timer(Duration(seconds: 3), (){
       
       
@@ -59,7 +61,13 @@ class _SplashScreen extends State <SplashScreen> {
     });
   }
 
-  
+  void getToken(){
+    if(kDebugMode){
+      OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+    }
+    
+    OneSignal.shared.setAppId('5525d5a5-a89f-4172-81aa-a5b9785aa88e');
+  }  
 
 
   void gotoPage() async{

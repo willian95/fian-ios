@@ -788,10 +788,10 @@ class _FirstPageState extends State<FirstPage> {
                                             child: Column(
                                               children: [
                                                 Container(
-                                                  
+                                                  width: 250,
                                                   transform: Matrix4.translationValues( 0, -60, 0.0),
                                                   child:Center(
-                                                    child: Text("LUNA "+data["moon_phase"].toString().toUpperCase().replaceAll("_", " "), style:GoogleFonts.montserrat(color: HexColor("#144E41"), fontWeight: FontWeight.bold, fontSize: 15))
+                                                    child: Text("LUNA "+data["moon_phase"].toString().toUpperCase().replaceAll("_", " "), textAlign:  TextAlign.center, style:GoogleFonts.montserrat(color: HexColor("#144E41"), fontWeight: FontWeight.bold, fontSize: 15))
                                                     )
                                                 ),
                                                 Container(
