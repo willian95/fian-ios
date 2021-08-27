@@ -67,7 +67,9 @@ class _SplashScreen extends State <SplashScreen> {
     }
     
     OneSignal.shared.setAppId('5525d5a5-a89f-4172-81aa-a5b9785aa88e');
-    OneSignal.promptUserForPushNotificationPermission();
+    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+      print("Accepted permission: $accepted");
+    });
 
     OneSignal.shared.setNotificationWillShowInForegroundHandler((OSNotificationReceivedEvent event) {
       // Will be called whenever a notification is received in foreground
