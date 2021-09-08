@@ -67,6 +67,7 @@ class _SplashScreen extends State <SplashScreen> {
     }
     
     OneSignal.shared.setAppId('5525d5a5-a89f-4172-81aa-a5b9785aa88e');
+                            
     OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
       print("Accepted permission: $accepted");
     });
@@ -86,49 +87,50 @@ class _SplashScreen extends State <SplashScreen> {
   void gotoPage() async{
 
     await storage.ready; 
+
     var numberStored = await storage.getItem("numberstored");
     var tutorialStored = await storage.getItem("tutorialstored");
     var welcomeStored = await storage.getItem("welcomeStored");
     var entered = false;
 
+    if((tutorialStored == "false" || tutorialStored == null) && (numberStored == "false" || numberStored == null) && (welcomeStored == "false" || welcomeStored == null)){
 
-    if(welcomeStored == "true" && entered == false){
-      entered = true;
-       Navigator.push(context, new MaterialPageRoute(
-        builder: (context) => PhoneConfiguration()
-      ));
-
-    }else if(entered == false){
-      
-      entered = true;
       Navigator.push(context, new MaterialPageRoute(
         builder: (context) => WelcomePage()
       ));
+
+
     }
 
-    if(numberStored == "true" && entered == false){
-      entered = true;
-      //Navigator.push(context, new MaterialPageRoute(
-        //builder: (context) => Tutorial()
-      //));
-    }else if(entered == false){
-      entered = true;
-       Navigator.push(context, new MaterialPageRoute(
+    if((tutorialStored == "false" || tutorialStored == null) && (numberStored == "false" || numberStored == null) && welcomeStored == "true"){
+
+      Navigator.push(context, new MaterialPageRoute(
         builder: (context) => PhoneConfiguration()
       ));
+
+
     }
 
-    if(tutorialStored == "true" && entered == false){
-      entered = true;
+    if((tutorialStored == "false" || tutorialStored == null) && numberStored == "true"){
+
+      Navigator.push(context, new MaterialPageRoute(
+        builder: (context) => Tutorial()
+      ));
+
+
+    }
+
+    if(tutorialStored == "true"){
+
       Navigator.push(context, new MaterialPageRoute(
         builder: (context) => FirstPage()
       ));
-    }else if(entered == false){
-        entered = true;
-       Navigator.push(context, new MaterialPageRoute(
-        builder: (context) => Tutorial()
-      ));
+
+
     }
+   
+
+    
 
   }
 
