@@ -16,7 +16,7 @@ class _MarketState extends State <Market> {
   Future<List<MarketShow>>? marketList;
   var loading = false;
   String selectedDepartment = "0";
-   var departments = ["Seleccione un departamento-0", "Antioquía-1", "Atlántico-2", "D. C. Santa Fe de Bogotá-3", "Bolívar-4", "Boyacá-5", "Caldas-6", "Caqueta-7", "Cauca-8",
+   var departments = ["Seleccione un departamento-0", "Antioquía-1", "Atlántico-2", "Bogotá D.C.-3", "Bolívar-4", "Boyacá-5", "Caldas-6", "Caqueta-7", "Cauca-8",
 "Cesar-9",
 "Córdoba-10",
 "Cundinamarca-11",
