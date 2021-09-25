@@ -366,20 +366,34 @@ class _FirstPageState extends State<FirstPage> {
 
   weatherAPICall(location) async{
 
-    print("mainLocation");
-    print(location);
-
-    var data = await http.get(Uri.parse("https://api.openweathermap.org/data/2.5/forecast?lat="+location.latitude.toString()+"&lon="+location.longitude.toString()+"&appid=d816b2362dc0ff9fc94670863e1505d9"));
+    var data = await http.get("http://api.weatherapi.com/v1/current.json?key=21e7af18717c4478b5f192748212409&q="+location.latitude.toString()+","+location.longitude.toString()+"&aqi=no");
     var weatherData = json.decode(data.body);
+    var weatherCode = weatherData["current"]["condition"]["code"].toString();
+    var weatherName = "";
 
-    print(weatherData["list"][0]["weather"][0]["main"]);
+    if(weatherCode == "1000" || weatherCode == "1003"){
+      weatherName = "clear";
+    }
+
+    else if(weatherCode == "1006" || weatherCode == "1009" || weatherCode == "1030" || weatherCode == "1135" || weatherCode == "1147"){
+      weatherName = "clouds";
+    }
+
+    else if(weatherCode == "1063" || weatherCode == "1069" || weatherCode == "1072" || weatherCode == "1087" || weatherCode == "1117" || weatherCode == "1150" || weatherCode == "1153" || weatherCode == "1168" || weatherCode == "1171" || weatherCode == "1180" || weatherCode == "1183" || weatherCode == "1186" || weatherCode == "1189" || weatherCode == "1192" || weatherCode == "1195" || weatherCode == "1198" || weatherCode == "1201" || weatherCode == "1204" || weatherCode == "1207" || weatherCode == "1240" || weatherCode == "1243" || weatherCode == "1246" || weatherCode == "1249" || weatherCode == "1252" ||weatherCode == "1255" || weatherCode == "1258" || weatherCode == "1273" || weatherCode == "1276"){
+      weatherName = "rain";
+    }
+
+    else{
+      weatherName = "snow";
+    }
 
     if(this.mounted){
       setState((){
-        mainWeather = weatherData["list"][0]["weather"][0]["main"];
+        mainWeather = weatherName;
       });
     }
 
+    checkForLocalStorageExistence(this.currentYear, this.currentMonth, this.currentDay, "now", true, true);
 
   }
 
