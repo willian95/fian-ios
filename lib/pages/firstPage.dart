@@ -366,7 +366,7 @@ class _FirstPageState extends State<FirstPage> {
 
   weatherAPICall(location) async{
 
-    var data = await http.get("http://api.weatherapi.com/v1/current.json?key=21e7af18717c4478b5f192748212409&q="+location.latitude.toString()+","+location.longitude.toString()+"&aqi=no");
+    var data = await http.get(Uri.parse("http://api.weatherapi.com/v1/current.json?key=21e7af18717c4478b5f192748212409&q="+location.latitude.toString()+","+location.longitude.toString()+"&aqi=no"));
     var weatherData = json.decode(data.body);
     var weatherCode = weatherData["current"]["condition"]["code"].toString();
     var weatherName = "";
